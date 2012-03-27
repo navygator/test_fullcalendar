@@ -4,6 +4,11 @@
 jQuery ->
   $(document).ready ->
       $('#calendar').fullCalendar({
+        header: {
+          left: 'month,agendaWeek,agendaDay',
+          center: 'title',
+          right: 'today prev,next'
+        },
         defaultView: 'agendaWeek',
         allDaySlot: true,
         height: 700,
