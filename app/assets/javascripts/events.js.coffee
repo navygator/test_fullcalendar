@@ -29,5 +29,7 @@ jQuery ->
           week: 'Неделя',
           day: 'День'
         },
-        events: "/events/"
+        events: "/events/",
+        eventClick: (event, jsEvent, view) ->
+          showEventDetails(event)
       })
