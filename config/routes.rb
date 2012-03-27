@@ -1,6 +1,6 @@
 TestCalendar::Application.routes.draw do
 
-  match 'events/get_events/' => 'events#get_events'
+  #match 'events/get_events/' => 'events#get_events'
   resources :events
 
   # The priority is based upon order of creation:

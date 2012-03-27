@@ -15,6 +15,12 @@
  *
  */
  
+ /**
+ * Navy 
+ * Changed start => start_at, end => end_at of event
+ * Added WeekEnds style template
+ */
+ 
 (function($, undefined) {
 
 
@@ -1051,15 +1057,15 @@ function EventManager(options, _sources) {
 	function updateEvent(event) { // update an existing event
 		var i, len = cache.length, e,
 			defaultEventEnd = getView().defaultEventEnd, // getView???
-			startDelta = event.start - event._start,
-			endDelta = event.end ?
-				(event.end - (event._end || defaultEventEnd(event))) // event._end would be null if event.end
+			startDelta = event.start_at - event._start,
+			endDelta = event.end_at ?
+				(event.end_at - (event._end || defaultEventEnd(event))) // event._end would be null if event.end_at
 				: 0;                                                      // was null and event was just resized
 		for (i=0; i<len; i++) {
 			e = cache[i];
 			if (e._id == event._id && e != event) {
 				e.start = new Date(+e.start + startDelta);
-				if (event.end) {
+				if (event.end_at) {
 					if (e.end) {
 						e.end = new Date(+e.end + endDelta);
 					}else{
@@ -1169,17 +1175,17 @@ function EventManager(options, _sources) {
 		var ignoreTimezone = firstDefined(source.ignoreTimezone, options.ignoreTimezone);
 		event._id = event._id || (event.id === undefined ? '_fc' + eventGUID++ : event.id + '');
 		if (event.date) {
-			if (!event.start) {
-				event.start = event.date;
+			if (!event.start_at) {
+				event.start_at = event.date;
 			}
 			delete event.date;
 		}
-		event._start = cloneDate(event.start = parseDate(event.start, ignoreTimezone));
-		event.end = parseDate(event.end, ignoreTimezone);
-		if (event.end && event.end <= event.start) {
-			event.end = null;
+		event._start = cloneDate(event.start_at = parseDate(event.start_at, ignoreTimezone));
+		event.end_at = parseDate(event.end_at, ignoreTimezone);
+		if (event.end_at && event.end_at <= event.start_at) {
+			event.end_at = null;
 		}
-		event._end = event.end ? cloneDate(event.end) : null;
+		event._end = event.end_at ? cloneDate(event.end_at) : null;
 		if (event.allDay === undefined) {
 			event.allDay = firstDefined(source.allDayDefault, options.allDayDefault);
 		}
@@ -1594,10 +1600,10 @@ fc.applyAll = applyAll;
 
 
 function exclEndDay(event) {
-	if (event.end) {
-		return _exclEndDay(event.end, event.allDay);
+	if (event.end_at) {
+		return _exclEndDay(event.end_at, event.allDay);
 	}else{
-		return addDays(cloneDate(event.start), 1);
+		return addDays(cloneDate(event.start_at), 1);
 	}
 }
 
@@ -1609,7 +1615,7 @@ function _exclEndDay(end, allDay) {
 
 
 function segCmp(a, b) {
-	return (b.msLength - a.msLength) * 100 + (a.event.start - b.event.start);
+	return (b.msLength - a.msLength) * 100 + (a.event.start_at - b.event.start_at);
 }
 
 
@@ -1632,7 +1638,7 @@ function sliceSegs(events, visEventEnds, start, end) {
 		isStart, isEnd;
 	for (i=0; i<len; i++) {
 		event = events[i];
-		eventStart = event.start;
+		eventStart = event.start_at;
 		eventEnd = visEventEnds[i];
 		if (eventEnd > start && eventStart < end) {
 			if (eventStart < start) {
@@ -2480,7 +2486,7 @@ function BasicView(element, calendar, viewName) {
 	
 	
 	function defaultEventEnd(event) {
-		return cloneDate(event.start);
+		return cloneDate(event.start_at);
 	}
 	
 	
@@ -2691,7 +2697,7 @@ function BasicEventRenderer() {
 						//setOverflowHidden(true);
 						dayDelta = rowDelta*7 + colDelta * (opt('isRTL') ? -1 : 1);
 						renderDayOverlay(
-							addDays(cloneDate(event.start), dayDelta),
+							addDays(cloneDate(event.start_at), dayDelta),
 							addDays(exclEndDay(event), dayDelta)
 						);
 					}else{
@@ -3443,7 +3449,7 @@ function AgendaView(element, calendar, viewName) {
 	
 	
 	function defaultEventEnd(event) {
-		var start = cloneDate(event.start);
+		var start = cloneDate(event.start_at);
 		if (event.allDay) {
 			return start;
 		}
@@ -3735,10 +3741,10 @@ function AgendaEventRenderer() {
 	
 	
 	function slotEventEnd(event) {
-		if (event.end) {
-			return cloneDate(event.end);
+		if (event.end_at) {
+			return cloneDate(event.end_at);
 		}else{
-			return addMinutes(cloneDate(event.start), opt('defaultEventMinutes'));
+			return addMinutes(cloneDate(event.start_at), opt('defaultEventMinutes'));
 		}
 	}
 	
@@ -3870,7 +3876,7 @@ function AgendaEventRenderer() {
 				if (seg.contentTop !== undefined && height - seg.contentTop < 10) {
 					// not enough room for title, put it in the time header
 					eventElement.find('div.fc-event-time')
-						.text(formatDate(event.start, opt('timeFormat')) + ' - ' + event.title);
+						.text(formatDate(event.start_at, opt('timeFormat')) + ' - ' + event.title);
 					eventElement.find('div.fc-event-title')
 						.remove();
 				}
@@ -3912,7 +3918,7 @@ function AgendaEventRenderer() {
 			"<div class='fc-event-inner fc-event-skin'" + skinCssAttr + ">" +
 			"<div class='fc-event-head fc-event-skin'" + skinCssAttr + ">" +
 			"<div class='fc-event-time'>" +
-			htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
+			htmlEscape(formatDates(event.start_at, event.end_at, opt('timeFormat'))) +
 			"</div>" +
 			"</div>" +
 			"<div class='fc-event-content'>" +
@@ -3990,7 +3996,7 @@ function AgendaEventRenderer() {
 						if (!cell.row) {
 							// on full-days
 							renderDayOverlay(
-								addDays(cloneDate(event.start), dayDelta),
+								addDays(cloneDate(event.start_at), dayDelta),
 								addDays(exclEndDay(event), dayDelta)
 							);
 							resetElement();
@@ -4003,7 +4009,7 @@ function AgendaEventRenderer() {
 									setOuterHeight(
 										eventElement,
 										slotHeight * Math.round(
-											(event.end ? ((event.end - event.start) / MINUTE_MS) : opt('defaultEventMinutes'))
+											(event.end_at ? ((event.end_at - event.start_at) / MINUTE_MS) : opt('defaultEventMinutes'))
 											/ opt('slotMinutes')
 										)
 									);
@@ -4039,7 +4045,7 @@ function AgendaEventRenderer() {
 						minuteDelta = Math.round((eventElement.offset().top - getBodyContent().offset().top) / slotHeight)
 							* opt('slotMinutes')
 							+ minMinute
-							- (event.start.getHours() * 60 + event.start.getMinutes());
+							- (event.start_at.getHours() * 60 + event.start_at.getMinutes());
 					}
 					eventDrop(this, event, dayDelta, minuteDelta, allDay, ev, ui);
 				}
@@ -4097,7 +4103,7 @@ function AgendaEventRenderer() {
 								eventElement.draggable('option', 'grid', null);
 							}
 							renderDayOverlay(
-								addDays(cloneDate(event.start), dayDelta),
+								addDays(cloneDate(event.start_at), dayDelta),
 								addDays(exclEndDay(event), dayDelta)
 							);
 						}else{
@@ -4134,10 +4140,10 @@ function AgendaEventRenderer() {
 			}
 		});
 		function updateTimeText(minuteDelta) {
-			var newStart = addMinutes(cloneDate(event.start), minuteDelta);
+			var newStart = addMinutes(cloneDate(event.start_at), minuteDelta);
 			var newEnd;
-			if (event.end) {
-				newEnd = addMinutes(cloneDate(event.end), minuteDelta);
+			if (event.end_at) {
+				newEnd = addMinutes(cloneDate(event.end_at), minuteDelta);
 			}
 			timeElement.text(formatDates(newStart, newEnd, opt('timeFormat')));
 		}
@@ -4177,8 +4183,8 @@ function AgendaEventRenderer() {
 				if (slotDelta != prevSlotDelta) {
 					timeElement.text(
 						formatDates(
-							event.start,
-							(!slotDelta && !event.end) ? null : // no change, so don't display time range
+							event.start_at,
+							(!slotDelta && !event.end_at) ? null : // no change, so don't display time range
 								addMinutes(eventEnd(event), opt('slotMinutes')*slotDelta),
 							opt('timeFormat')
 						)
@@ -4324,7 +4330,7 @@ function View(element, calendar, viewName) {
 	
 	// returns a Date object for an event's end
 	function eventEnd(event) {
-		return event.end ? cloneDate(event.end) : defaultEventEnd(event);
+		return event.end_at ? cloneDate(event.end_at) : defaultEventEnd(event);
 	}
 	
 	
@@ -4661,7 +4667,7 @@ function DayEventRenderer() {
 			if (!event.allDay && seg.isStart) {
 				html +=
 					"<span class='fc-event-time'>" +
-					htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
+					htmlEscape(formatDates(event.start_at, event.end_at, opt('timeFormat'))) +
 					"</span>";
 			}
 			html +=
@@ -4893,7 +4899,7 @@ function DayEventRenderer() {
 			var dayDelta;
 			var helpers;
 			var eventCopy = $.extend({}, event);
-			var minCell = dateCell(event.start);
+			var minCell = dateCell(event.start_at);
 			clearSelection();
 			$('body')
 				.css('cursor', direction + '-resize')
@@ -4932,7 +4938,7 @@ function DayEventRenderer() {
 						}
 					}
 					clearOverlays();
-					renderDayOverlay(event.start, addDays(cloneDate(newEnd), 1)); // coordinate grid already rebuild at hoverListener.start
+					renderDayOverlay(event.start_at, addDays(cloneDate(newEnd), 1)); // coordinate grid already rebuild at hoverListener.start
 				}
 			}, ev);
 			

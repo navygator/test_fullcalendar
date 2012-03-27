@@ -11,18 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120326091708) do
+ActiveRecord::Schema.define(:version => 20120321045046) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
     t.text     "description"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean  "all_day",         :default => false
+    t.boolean  "boolean",         :default => false
+    t.string   "color",           :default => "#6F93DB"
     t.integer  "event_series_id"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.datetime "start"
-    t.datetime "end"
-    t.string   "color",           :default => "#6F93DB"
-    t.boolean  "all_day",         :default => false
   end
 
 end

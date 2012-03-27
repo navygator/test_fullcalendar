@@ -6,12 +6,6 @@ class EventsController < ApplicationController
     if params[:start]
       @events = Event.calendar_events(params[:start], params[:end])
 
-      @events << Event.new(:title => "First Event", :description => "Test event for calendar",
-                           :start => Time.now, :end => 2.hour.from_now, :color => 'blue')
-      @events << Event.new(:title => "Second Event", :description => "Test event for calendar",
-                           :start => Time.now, :end => 3.hour.from_now, :color => 'red')
-      @events << Event.new(:title => "Third Event", :description => "Test event for calendar", :start => 1.hour.from_now, :end => 2.hour.from_now)
-
       respond_with @events
     end
   end
