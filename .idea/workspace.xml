@@ -31,10 +31,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="events_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="event.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/event.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="71" selection-start="422" selection-end="422" vertical-scroll-proportion="0.5918762">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="events_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="99" selection-start="1933" selection-end="1933" vertical-scroll-proportion="1.1805556">
+            <state line="19" column="57" selection-start="785" selection-end="785" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -53,7 +62,11 @@
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="17" column="31" selection-start="381" selection-end="381" vertical-scroll-proportion="-11.115385">
-              <folding />
+              <folding>
+                <marker date="1332415011199" expanded="true" signature="21:379" placeholder="..." />
+                <marker date="1332415011199" expanded="true" signature="28:341" placeholder="..." />
+                <marker date="1332415011199" expanded="true" signature="348:371" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,7 +74,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/events/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="25" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0">
+            <state line="0" column="25" selection-start="25" selection-end="25" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -70,7 +83,7 @@
       <file leaf-file-name="events.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/events.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="22" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0">
+            <state line="7" column="24" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -94,7 +107,10 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/events.js.coffee" />
+        <option value="$PROJECT_DIR$/db/migrate/20120326071430_add_startend_columns_to_events.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20120326091708_add_allday_to_events.rb" />
         <option value="$PROJECT_DIR$/app/controllers/events_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/event.rb" />
       </list>
     </option>
   </component>
@@ -458,10 +474,10 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.externalTools" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="recentsLimit" value="5" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Rails.Development: test_calendar">
     <configuration default="true" type="RakeRunConfigurationType" factoryName="Rake">
@@ -571,7 +587,7 @@
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
       <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSRemoteDebuggerConfigurationSettings>
       <method>
@@ -698,7 +714,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20761494" sideWeight="0.7304582" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2112069" sideWeight="0.7304582" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26954177" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -763,119 +779,109 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/events_controller.rb</url>
-          <line>45</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/events_controller.rb</url>
-          <line>35</line>
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/migrate/20120321045046_create_events.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="12" selection-start="227" selection-end="227" vertical-scroll-proportion="0.18967922">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/events/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="23" selection-end="23" vertical-scroll-proportion="0.036093418">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="51" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/events/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="25" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/actionpack-3.2.1/lib/action_controller/metal/implicit_render.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.13682093">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/models/event_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="42" selection-start="102" selection-end="102" vertical-scroll-proportion="0.17102616">
-          <folding />
-        </state>
+        <state line="5" column="42" selection-start="102" selection-end="102" vertical-scroll-proportion="0.17102616" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="4" selection-start="1568" selection-end="1568" vertical-scroll-proportion="0.56673115">
-          <folding />
-        </state>
+        <state line="35" column="4" selection-start="1568" selection-end="1568" vertical-scroll-proportion="0.56673115" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/event.rb">
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="41" selection-start="502" selection-end="502" vertical-scroll-proportion="0.0">
+        <state line="28" column="41" selection-start="502" selection-end="502" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/actionpack-3.2.1/lib/action_controller/metal/implicit_render.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120321045046_create_events.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="31" selection-start="381" selection-end="381" vertical-scroll-proportion="-11.115385">
+        <state line="8" column="12" selection-start="227" selection-end="227" vertical-scroll-proportion="0.27364185">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120326071430_add_startend_columns_to_events.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="34" selection-start="300" selection-end="300" vertical-scroll-proportion="0.3420523">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120326091708_add_allday_to_events.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="160" selection-end="160" vertical-scroll-proportion="0.13152805">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/events.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0">
+        <state line="7" column="24" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/events/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="25" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="31" selection-start="381" selection-end="381" vertical-scroll-proportion="-11.115385">
+          <folding>
+            <marker date="1332415011199" expanded="true" signature="21:379" placeholder="..." />
+            <marker date="1332415011199" expanded="true" signature="28:341" placeholder="..." />
+            <marker date="1332415011199" expanded="true" signature="348:371" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="51" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/actionpack-3.2.1/lib/action_controller/metal/rescue.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="34" selection-start="539" selection-end="539" vertical-scroll-proportion="0.4410058">
+        <state line="30" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.63829786">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.yml">
+    <entry file="file://C:/RailsInstaller/Ruby1.9.2/lib/ruby/gems/1.9.1/gems/activesupport-3.2.1/lib/active_support/json/encoding.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="78" column="0" selection-start="2647" selection-end="2647" vertical-scroll-proportion="0.3326886">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/events_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="99" selection-start="1933" selection-end="1933" vertical-scroll-proportion="1.1805556">
+        <state line="19" column="57" selection-start="785" selection-end="785" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/event.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="71" selection-start="422" selection-end="422" vertical-scroll-proportion="0.5918762">
           <folding />
         </state>
       </provider>

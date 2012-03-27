@@ -3121,6 +3121,9 @@ function AgendaView(element, calendar, viewName) {
 			}else{
 				bodyCell.removeClass(tm + '-state-highlight fc-today');
 			}
+            if (date.getDay() == 6 || date.getDay() == 0){
+				bodyCell.addClass(tm + 'fc-weekends');
+			}
 			setDayID(headCell.add(bodyCell), date);
 		}
 	}

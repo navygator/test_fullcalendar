@@ -1,18 +1,23 @@
 class EventsController < ApplicationController
 
-  respond_to :html, :js, :xml
+  respond_to :html, :json
 
   def index
-    #@event = Event.new(:title => "First Event", :description => "Test event for calendar", :start_at => Time.now, :end_at => 1.hour.from_now)
-    #@event.save
-    #event = Event.last
-    #event.update_attributes({:title => "Second event", :start_at => "2012-03-22 14:00"})
-    #event.save
-    @events = Event.all
+    if params[:start]
+      @events = Event.calendar_events(params[:start], params[:end])
+
+      @events << Event.new(:title => "First Event", :description => "Test event for calendar",
+                           :start => Time.now, :end => 2.hour.from_now, :color => 'blue')
+      @events << Event.new(:title => "Second Event", :description => "Test event for calendar",
+                           :start => Time.now, :end => 3.hour.from_now, :color => 'red')
+      @events << Event.new(:title => "Third Event", :description => "Test event for calendar", :start => 1.hour.from_now, :end => 2.hour.from_now)
+
+      respond_with @events
+    end
   end
 
   def show
-    @event = Event.new(:end_at => 1.hour.from_now)
+    @event = Event.find(params[:id])
     respond_with @event
   end
 
@@ -27,27 +32,6 @@ class EventsController < ApplicationController
       @event_series = EventSeries.new(params[:event])
     end
   end
-
-  def get_events
-    @start_at = Time.at(params[:start].to_i)
-    @events = Event.where("start_at >= ? AND end_at <= ?",
-                          Time.at(params[:start].to_i), Time.at(params[:end].to_i))
-
-    #@events = Event.all
-    #@events = []
-    @events << Event.new(:title => "First Event", :description => "Test event for calendar", :start_at => Time.now, :end_at => 2.hour.from_now)
-    @events << Event.new(:title => "Second Event", :description => "Test event for calendar", :start_at => Time.now, :end_at => 3.hour.from_now)
-    @events << Event.new(:title => "Third Event", :description => "Test event for calendar", :start_at => 1.hour.from_now, :end_at => 2.hour.from_now)
-    #
-    #events = []
-    #@events.each do |event|
-    #  events << {:id => event.id, :color => event.title=~/first/i ? 'blue' : 'red', :title => event.title, :description => event.description || "Some cool description here...", :start => "#{event.start_at.iso8601}", :end => "#{event.end_at.iso8601}", :allDay => event.all_day, :recurring => (event.event_series_id)? true: false}
-    #end
-    #render :text => events.to_json
-    respond_with @events
-  end
-
-
 
   def move
     #@event = Event.find_by_id params[:id]

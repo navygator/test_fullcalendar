@@ -5,7 +5,7 @@ jQuery ->
   $(document).ready ->
       $('#calendar').fullCalendar({
         defaultView: 'agendaWeek',
-        allDaySlot: false,
+        allDaySlot: true,
         height: 700,
         firstDay: 1,
         axisFormat: 'HH:mm',
@@ -24,5 +24,5 @@ jQuery ->
           week: 'Неделя',
           day: 'День'
         },
-        events: "/events/get_events/"
+        events: "/events/"
       })
