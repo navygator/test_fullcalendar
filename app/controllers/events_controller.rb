@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  respond_to :html, :json
+  respond_to :html, :js, :json
 
   def index
     if params[:start]
@@ -12,18 +12,20 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    respond_with @event
   end
 
   def new
-    @event = Event.new(:end_at => 1.hour.from_now, :period => "Does not repeat")
+    start_at = Time.zone.parse(params[:start_at])
+    @event = Event.new(:start_at => start_at, :end_at => start_at + 1.hour)
   end
 
   def create
-    if params[:event][:period] == "Does not repeat"
-      @event = Event.new(params[:event])
+    @event = Event.new(params[:event])
+    if @event.save
+      flash.now[:success] = "Event created"
     else
-      @event_series = EventSeries.new(params[:event])
+      flash.now[:error] = "We have some errors here..."
+      render 'new'
     end
   end
 

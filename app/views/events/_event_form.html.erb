@@ -1,0 +1,18 @@
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, :class => "alert alert-#{key}") %>
+<% end %>
+<%= form_for @event, :remote => true do |f| %>
+    <%= f.label t :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label t :description %>
+    <%= f.text_field :description%> <br/>
+
+    <%= f.label t :start_at %>
+    <%= f.text_field :start_at %>
+
+    <%= f.label t :end_at %>
+    <%= f.text_field :end_at %>
+
+    <%= f.submit t(:create), :class => "btn btn-large btn-primary" %>
+<% end %>

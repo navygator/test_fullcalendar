@@ -4,9 +4,12 @@
   <title>TestCalendar</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag "fullcalendar" %>
-  <%= stylesheet_link_tag "redmond/redmond.css" %>
+  <%= stylesheet_link_tag "redmond/redmond" %>
+  <%= stylesheet_link_tag "jquery-ui-timepicker-addon" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "fullcalendar" %>
+  <%= javascript_include_tag "jquery-ui-timepicker-addon" %>
+  <%= javascript_include_tag "jquery-ui-timepicker-ru" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -27,5 +30,6 @@
 <div class="container">
   <%= yield %>
 </div>
+<%= debug(params) if Rails.env.development? %>
 </body>
 </html>

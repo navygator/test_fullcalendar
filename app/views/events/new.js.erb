@@ -1,0 +1,16 @@
+$("#event_container").html("<%= escape_javascript(render 'event_form') %>");
+$('#event_dialog').dialog({
+    title: 'Новое',
+    modal: true,
+    resizable: false,
+    width: 500,
+    close: function(event, ui) { $(this).dialog('destroy') }
+});
+$(function (){
+        $('#event_start_at').datetimepicker( { stepMinute: 15 } );
+        $("#event_start_at").datepicker("setDate", new Date("<%= @event.start_at.iso8601 %>"));
+});
+$(function (){
+        $('#event_end_at').datetimepicker( { stepMinute: 15 } );
+        $("#event_end_at").datepicker("setDate", new Date("<%= @event.end_at.iso8601 %>"));
+});

@@ -1,6 +1,9 @@
 class Event < ActiveRecord::Base
   attr_accessor :allDay
 
+  validates :title, :presence => true
+  validates :description, :presence => true
+
   def self.calendar_events(start_at, end_at)
     @events = where("start_at >= ? AND end_at <= ?",
                         Time.at(start_at.to_i), Time.at(end_at.to_i))

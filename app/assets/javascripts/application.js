@@ -15,7 +15,7 @@
 //= require jquery-ui
 //= require_tree .
 function showEventDetails(event){
-    $('#event_desc').html(event.description);
+    $('#event_container').html(event.description);
     //$('#edit_event').html("<a href = 'javascript:void(0);' onclick ='editEvent(" + event.id + ")'>Edit</a>");
     if (event.recurring) {
         title = event.title + "(Recurring)";
@@ -27,16 +27,16 @@ function showEventDetails(event){
         title = event.title;
         //$('#delete_event').html("<a href = 'javascript:void(0);' onclick ='deleteEvent(" + event.id + ", " + false + ")'>Delete</a>");
     }
-    $('#desc_dialog').dialog({
+    $('#event_dialog').dialog({
         title: title,
         modal: true,
         width: 600,
         close: function(event, ui){
-            $('#desc_dialog').dialog('destroy')
+            $(this).dialog('destroy')
         },
         resizable: false,
         buttons: {
-            "Ok": function() {
+            "Save": function() {
                 $(this).dialog("close");
             },
             "Cancel": function() {

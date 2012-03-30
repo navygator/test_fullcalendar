@@ -1,0 +1,16 @@
+$("#event_container").html("<%= escape_javascript(render 'event_detail') %>");
+$('#event_dialog').dialog({
+    title: <%= "'#{@event.title}'" %>,
+    modal: true,
+    resizable: false,
+    width: 500,
+    buttons: {
+        "Save": function() {
+            $(this).dialog("close");
+        },
+        "Cancel": function() {
+            $(this).dialog("close");
+        }
+    },
+    close: function(event, ui) { $(this).dialog('destroy') }
+});

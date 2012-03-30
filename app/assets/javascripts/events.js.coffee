@@ -19,6 +19,7 @@ jQuery ->
         theme: true,
         dayNamesShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
         monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+        monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
         buttonText: {
           prev: '&nbsp;&#9668;&nbsp;',
           next: '&nbsp;&#9658;&nbsp;',
@@ -31,5 +32,7 @@ jQuery ->
         },
         events: "/events/",
         eventClick: (event, jsEvent, view) ->
-          showEventDetails(event)
+          $.get("/events/" + event.id)
+        dayClick: (date, allDay, jsEvent, view) ->
+          $.get("/events/new?start_at=" + date.toUTCString())
       })
